@@ -7,7 +7,7 @@ class ProductModel {
   final String unit;
   final double price;
   final double gstRate;
-  final int stock; // ✅ Added stock field
+  final double stock; // ✅ Stock field (decimal for units like MTR)
   final bool isActive;
   final DateTime? createdAt;
   final DateTime? updatedAt;
@@ -25,7 +25,7 @@ class ProductModel {
     required this.unit,
     required this.price,
     required this.gstRate,
-    this.stock = 0, // ✅ Default to 0 if not provided
+    this.stock = 0.0, // ✅ Default to 0 if not provided
     required this.isActive,
     this.createdAt,
     this.updatedAt,
@@ -122,7 +122,7 @@ class ProductModel {
       price: basePrice,
       gstRate: parseDouble(
           json['GstRate'] ?? json['gst_rate'] ?? json['gst'] ?? 0.0),
-      stock: parseInt(json['ItemQuantity'] ??
+      stock: parseDouble(json['ItemQuantity'] ??
           json['item_quantity'] ??
           json['stock'] ??
           json['quantity'] ??

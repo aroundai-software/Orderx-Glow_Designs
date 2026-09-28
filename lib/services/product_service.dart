@@ -559,7 +559,7 @@ class ProductService {
   }
 
   // NEW: Method to get current stock level
-  Future<int> getCurrentStock(String productId) async {
+  Future<double> getCurrentStock(String productId) async {
     try {
       final response = await _supabase
           .from('products')
@@ -568,17 +568,15 @@ class ProductService {
           .single();
 
       final stock = response['ItemQuantity'];
-      if (stock is int) {
-        return stock;
-      } else if (stock is num) {
-        return stock.toInt();
+      if (stock is num) {
+        return stock.toDouble();
       } else {
         print('Warning: ItemQuantity is not a number: $stock');
-        return 0;
+        return 0.0;
       }
     } catch (e) {
       print('Error fetching current stock for product $productId: $e');
-      return 0;
+      return 0.0;
     }
   }
 

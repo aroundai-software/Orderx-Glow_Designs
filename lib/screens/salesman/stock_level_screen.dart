@@ -306,7 +306,7 @@ class _StockLevelScreenState extends State<StockLevelScreen> {
                 const SizedBox(height: 8),
 
                 // Stock Quantity - Show real-time stock
-                FutureBuilder<int>(
+                FutureBuilder<double>(
                   future: _productService.getCurrentStock(product.id),
                   builder: (context, snapshot) {
                     final currentStock = snapshot.data ?? product.stock;

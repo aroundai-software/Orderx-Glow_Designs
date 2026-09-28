@@ -86,7 +86,7 @@ class _ProductDetailsDialogState extends State<ProductDetailsDialog> {
   List<Map<String, dynamic>> _availableCategories = [];
   
   // Current stock tracking
-  int _currentStock = 0;
+  double _currentStock = 0.0;
 
   // Unit from DB (fetched fresh on dialog open)
   String _unit = '';
